@@ -742,6 +742,10 @@ int main(int argc, char* argv[]) {
         return -1;
     }
 
+    int index = 0;
+    const int arrayLength = sizeof(gameObjects) / sizeof(int) / 21;
+    const char* gameObj[arrayLength];
+
     auto width = 1280;
     auto height = 720;
 #ifdef __EMSCRIPTEN__
@@ -855,6 +859,10 @@ int main(int argc, char* argv[]) {
         {
             static float f = 0.0f;
             static int counter = 0;
+
+            ImGui::Begin("GameObject");
+            ImGui::Combo("GameObject", &index, gameObj, IM_ARRAYSIZE(gameObj));
+            ImGui::End();
 
             ImGui::Begin("Hello, world!");                          // Create a window called "Hello, world!" and append into it.
 
